@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -23,4 +24,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * The function save user profile
+     * @param $data
+     */
+    public static function updateProfile($data){
+        $user = Auth::user();
+        $user->name = $data['name'];
+        $user->phone = $data['phone'];
+        if (!empty($data->password)) $user->password = bcrypt($data['password']);
+        $user->save();
+    }
 }

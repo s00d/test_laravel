@@ -17,4 +17,12 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['as'=>'home', 'uses'=>'HomeController@index']);
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('profile', ['as'=>'profile', 'uses'=>'HomeController@profile']);
+    Route::post('profile', ['as'=>'profileSave', 'uses'=>'HomeController@updateProfile']);
+});
+
+
+
