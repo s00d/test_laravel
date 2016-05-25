@@ -1,5 +1,5 @@
-# test_laravel - its test lartavel project
+# test_laravel - laravel project(test)
 
-1) login, register and reset password
+1) **login, register and reset password**
 
-2) profile
+2) **profile**
